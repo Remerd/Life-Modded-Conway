@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+screen -d -m -A -S life /home/Remerd/LIFE/ver.3_VR/scr_websocket_start

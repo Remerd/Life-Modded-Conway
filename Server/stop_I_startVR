@@ -1,0 +1,11 @@
+#!/bin/bash
+
+kill -9 $(pgrep -f life)
+
+cd ver.3_VR
+screen -d -m -A -S life /home/Remerd/LIFE/ver.3_VR/scr_websocket_start
+cp ./websocket/buffer.txt.ini ./websocket/buffer.txt
+cd websocket
+./life_lite &
+cd ..
+cd ..

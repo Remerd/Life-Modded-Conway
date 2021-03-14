@@ -1,0 +1,21 @@
+<html>
+<head
+><title>LIFE</title>
+<script type="text/javascript">
+
+function Reload () {
+location.reload()
+}
+
+</script>
+</head>
+<body>
+
+<iframe id="iframe1" height="630" width="700" src="http://lab.izobretarium.ru:80" frameborder="0" onload="IFR = this; setTimeout ('IFR.src = IFR.src', 1000)"></iframe>
+<input type="button" value="Reload" onclick="Reload();">
+<input type="button" value="Add" onclick="window.open('/form.php');">
+<!--
+<input type="button" value="Ru" onclick="window.open('/index_ru.html');">-->
+</body>
+</html>
+	

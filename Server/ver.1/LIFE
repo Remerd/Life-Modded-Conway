@@ -1,0 +1,139 @@
+#!/bin/bash
+function echo_readme
+{
+	echo ""
+	echo "Usage:"
+	echo ""
+	echo "First parameters:				Second parameters:"
+	echo ""
+	echo "help - Show this message"
+	echo "readme - Show this message"
+	echo "--------------------------------------------------------------------------------------"
+	echo "start - Start second parameter			all - Starting tornado and server"
+	echo "						tornado - Starting tornado"
+	echo "						server - Starting programm"
+	echo "---------------------------------------------------------------------------------------"
+	echo "stop - Stop second parameter			all - Stopping tornado and server"
+	echo "						tornado - Stopping tornado"
+	echo "						server - Stopping programm"
+	echo "---------------------------------------------------------------------------------------"
+	echo "ini - Starting all with preset			glider - Starting with glider preset"
+	echo "						chaos - Starting with chaos preset"
+	echo "						10x10 - Starting with 10x10 preset"
+	echo "						previous - Countinue previous population"
+	echo "---------------------------------------------------------------------------------------"
+}
+
+function start_all
+{
+        cd tornado
+	cd static	
+	./server &
+	cd ..
+	cd ..
+	/usr/bin/python3 ./tornado/app.py &
+}
+
+echo "Starting Life"
+
+if [ -n "$1" ]
+then
+	if [ -n "$2" ]
+	then
+		echo "Starting Life engine"
+		echo "------------------------------------------------------"
+		
+		if [ $1 == "start" ]
+		then
+			#echo "Starting ..."
+			if [ $2 == "all" ]
+			then
+				echo "Starting all"
+				start_all
+			elif [ $2 == "tornado" ]
+			then
+				echo "Starting tornado"
+				python3 ./tornado/app.py &
+			elif [ $2 == "server" ]
+			then
+				echo "Starting server"
+				cd tornado
+				cd static
+				./server &
+				cd ..
+				cd ..
+			else 
+				echo "Unknown second parameter"
+				echo_readme
+			fi 
+		elif [ $1 == "stop" ]
+		then
+			#echo "Stopping ..."
+			if [ $2 == "all" ]
+			then
+				echo "Stopping all"
+				kill -9 $(pgrep -f server)
+				kill -9 $(pgrep -f app.py)
+			elif [ $2 == "tornado" ]
+			then
+				echo "Stopping tornado"
+				kill -9 $(pgrep -f app.py)
+			elif [ $2 == "server" ]
+			then
+				echo "Stopping server"
+				kill -9 $(pgrep -f server)
+			else
+				echo "Unknown second parameter"
+				echo_readme
+			fi
+		elif [ $1 == "ini" ]
+		then
+			#echo "Starting with preset"
+			if [ $2 == "glider" ]
+			then
+				echo "Starting glider preset"
+				start_all
+				cp ./tornado/static/buffer.txt.ini_2gliders ./tornado/static/buffer.txt
+			elif [ $2 == "chaos" ]
+			then
+				echo "Starting chaos preset"
+				start_all
+				cp ./tornado/static/buffer.txt.ini ./tornado/static/buffer.txt
+			elif [ $2 == "10x10" ]
+			then
+				echo "Starting with 10x10 preset"
+				start_all
+				cp ./tornado/static/buffer.txt.ini_10x10 ./tornado/static/buffer.txt
+			elif [ $2 == "previous" ]
+			then
+				echo "Starting with previous population"
+				start_all
+				cp ./tornado/static/log.txt ./tornado/static/buffer.txt
+			else
+				echo "Unknown second parameter"
+				echo_readme
+			fi
+		elif [ $1 == "compile" ]
+		then
+			if [ $2 == "server" ]
+			then
+				gcc ./2DLIFE/server_src/main.c -o ./tornado/static/server
+			fi
+		else
+			echo "Unknown first parameter"
+			echo_readme
+		fi
+
+		echo "------------------------------------------------------"
+		echo "End of LIFE engine script"
+	elif [ $1 == "readme" ] || [ $1 == "help" ]
+	then 
+		echo_readme
+	else
+		echo "Second parameter not found"
+		echo_readme
+	fi
+else 
+	echo "No parameters found"
+	echo_readme
+fi

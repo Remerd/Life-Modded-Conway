@@ -1,0 +1,5 @@
+ls
+eixt
+#!/bin/bash
+cd websocket
+/usr/bin/python3 /home/Remerd/LIFE/ver.2/websocket/server.py

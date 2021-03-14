@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700i,800,800i,900,900i");
+/*======================
+  Reset Default Styles 
+========================*/
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+a,
+h1,
+h2,
+img,
+li,
+p,
+section,
+ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+/*  vertical-align: baseline;*/
+}
+
+section {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  outline: 0 !important;
+  text-decoration: none !important;
+}
+
+/*======================
+ Common Style 
+========================*/
+body {
+background-color: #FFF;
+}
+
+
+main {
+  width: 1000px;
+  float: left;
+
+  margin: 0 auto;
+  padding: 0px 0;
+  border: 1px solid #000000;
+}
+
+main section {
+  width: 100%;
+  height: auto;
+  float: left;
+  display: block;
+  margin: 0 auto;
+  padding: 0px 0 0;
+}
+main section li,
+main section a {
+  display: block;
+}
+main section li {
+  width: 10px;
+  height: auto;
+  float: left;
+  position: relative;
+  padding: 0px 0;
+}
+main section li:nth-child(8n+1) {
+  clear: left;
+}
+
+
+
+/*Ne udalyat!*/
+/*---- View < 1024px ----*/
+@media (max-width: 1024px) {
+  main section li {
+    width: 50%;
+  }
+  main section li:nth-child(4n+1) {
+    clear: none;
+  }
+  main section li:nth-child(2n+1) {
+    clear: left;
+  }
+}
+/*---- View < 450px ----*/
+@media (max-width: 450px) {
+  main section li {
+    width: 100%;
+  }
+}
+
+
+
+
+/*======================
+Check Boxes Styles
+========================*/
+input[type='checkbox'] {
+  opacity: 0;
+  z-index: -1;
+}
+
+input[type='checkbox'] + label {
+  width: 10px;
+  height: 10px;
+  display: block;
+  position: relative;
+  margin: auto;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  text-indent: -999px;
+  overflow: hidden;
+  border: 1px solid #000000;
+  cursor: pointer;
+  border: 1px solid #000000;
+  /*background: transparent;*/
+  transition: 0.5s ease all;
+  -moz-transition: 0.5s ease all;
+  -webkit-transition: 0.5s ease all;
+}
+
+input[type='checkbox']:checked + label {
+  border: 1px solid #008000;
+  background: #008000;
+}

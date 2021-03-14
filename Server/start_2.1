@@ -1,0 +1,8 @@
+#!/bin/bash
+
+kill -9 $(pgrep -f life)
+
+cd ver.2.1
+screen -d -m -A -S life /home/Remerd/LIFE/ver.2.1/scr_websocket_start
+cd websocket
+./life &

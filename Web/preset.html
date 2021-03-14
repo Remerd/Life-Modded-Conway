@@ -1,0 +1,41 @@
+<html>
+<head>
+<link rel="icon" href="/images/LifeLogo.png" type="/images/png">
+<meta charset="windows-1251">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131766938-2"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131766938-2');
+</script>
+
+</head>
+<body>
+
+<form method="post" action="preset_add.php">
+
+<div style="display: block; width:4010px;">
+<div>
+<h3>Этот функционал находится в стадии БЕТА тестирования.</h3>
+</div>
+<?php
+<div>
+<p><input type="radio" value="0" name="preset" checked> Квадрат</p>
+<p><input type="radio" value="1" name="preset"> Хаос</p>
+<p><input type="radio" value="2" name="preset"> Четыре колонии</p>
+<p><input type="radio" value="3" name="preset"> Большая спираль</p>
+<p><input type="radio" value="4" name="preset"> Модель галактики</p>
+<p><input type="radio" value="5" name="preset"> Малая модель</p>
+<p><input type="radio" value="6" name="preset"> Маленкая спираль</p>
+</div>
+
+<input type="submit" value="Добавить клетки в вселенную" style="font-weight:bold;">
+</div>
+</form>
+
+</body>
+
